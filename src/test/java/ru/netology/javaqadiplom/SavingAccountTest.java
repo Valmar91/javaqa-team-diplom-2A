@@ -4,6 +4,19 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class SavingAccountTest {
+    @Test
+    public void shouldThrowIllegalArgumentException() {
+        SavingAccount account = new SavingAccount(
+                2_000,
+                10_000,
+                10_000,
+                -5
+        );
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new SavingAccount(2_000, 10_000, 10_000, -5);
+        });
+    }
 
     @Test
     public void shouldAddAmountToActualBalance() {
