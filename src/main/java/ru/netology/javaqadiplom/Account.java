@@ -16,6 +16,10 @@ public class Account {
         return 0;
     }
 
+    public boolean yearChangeCredit () {
+        return false;
+    }
+
     public int getBalance() {
         return balance;
     }
