@@ -98,7 +98,7 @@ public class CreditAccountTest {
     }
 
     @Test
-    public void shouldAddToPay4() { //сумма покупки меньше больше лимита, должно возвращаться False
+    public void shouldAddToPay4() { //сумма покупки больше лимита, должно возвращаться False
         CreditAccount account = new CreditAccount(
                 0,
                 5_000,
@@ -144,10 +144,8 @@ public class CreditAccountTest {
     @Test // исключения rate
     public void TestCreditAccount1() {
 
-        Account account = new Account();
-
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            CreditAccount account1 = new CreditAccount(
+            new CreditAccount(
                     0,
                     5000,
                     -15
@@ -157,10 +155,9 @@ public class CreditAccountTest {
 
     @Test // исключения кредитного лимита, нужно добавить исключения
     public void TestCreditAccount2() {
-        Account account = new Account();
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            CreditAccount account1 = new CreditAccount(
+            new CreditAccount(
                     0,
                     -5000,
                     15
@@ -170,10 +167,9 @@ public class CreditAccountTest {
 
     @Test // исключения стартового баланса, нужно добавить исключения
     public void TestCreditAccount3() {
-        Account account = new Account();
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            CreditAccount account1 = new CreditAccount(
+            new CreditAccount(
                     -1000,
                     5000,
                     15
