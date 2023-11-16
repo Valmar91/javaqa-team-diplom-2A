@@ -12,12 +12,8 @@ public class Account {
         return false;
     }
 
-    public int yearChange() {
+    protected int yearChange() {
         return 0;
-    }
-
-    public boolean yearChangeCredit () {
-        return false;
     }
 
     public int getBalance() {
