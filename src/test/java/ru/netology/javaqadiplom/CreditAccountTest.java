@@ -138,7 +138,7 @@ public class CreditAccountTest {
         Assertions.assertEquals(0, account.getBalance());
     }
 
-    @Test //покупка до кридитного лимита на отрицательное значение
+    @Test //покупка до кредитного лимита на отрицательное значение
     public void shouldAddToPay5() {
         CreditAccount account = new CreditAccount(
                 0,
