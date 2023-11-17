@@ -114,7 +114,24 @@ public class SavingAccountTest {
 
         account.add(9_000);
 
-        Assertions.assertEquals(2000, account.getBalance());
+        Assertions.assertEquals(2_000, account.getBalance());
+    }
+    @Test
+    public void shouldRepeatAddAmountIfResultMoreOrEqualMaxBalance() {
+        SavingAccount account = new SavingAccount(
+                2_000,
+                1_000,
+                10_000,
+                5
+        );
+
+        account.add(2_000);
+        account.add(2_000);
+        account.add(2_000);
+        account.add(2_000);
+        account.add(2_000);
+
+        Assertions.assertEquals(10_000, account.getBalance());
     }
 
     @Test
@@ -158,19 +175,34 @@ public class SavingAccountTest {
 
         Assertions.assertEquals(1500, account.getBalance());
     }
-
     @Test
     public void shouldNotPayFromCardIfBalanceBecomesLessThanMinimum() {
         SavingAccount account = new SavingAccount(
                 5_500,
-                4_000,
+                4_500,
                 10_000,
                 5
         );
 
-        account.pay(3000);
+        account.pay(1_500);
 
         Assertions.assertEquals(5_500, account.getBalance());
+    }
+
+    @Test
+    public void shouldRepeatPayFromCardTillBalanceBecomesMinimum() {
+        SavingAccount account = new SavingAccount(
+                5_500,
+                4_500,
+                10_000,
+                5
+        );
+
+        account.pay(500);
+        account.pay(500);
+        account.pay(500);
+
+        Assertions.assertEquals(4_500, account.getBalance());
     }
 
     @Test
