@@ -74,6 +74,21 @@ public class SavingAccountTest {
         Assertions.assertEquals(2_000 + 3_000, account.getBalance());
     }
     @Test
+    public void shouldNotAddAmountToActualBalanceIfBalanceBecomesIncorrect() {
+        SavingAccount account = new SavingAccount(
+                2_000,
+                1_000,
+                10_000,
+                5
+        );
+
+        account.add(3_000);
+        account.add(3_000);
+        account.add(3_000);
+
+        Assertions.assertEquals(8_000, account.getBalance());
+    }
+    @Test
     public void shouldAddAmountToZeroBalance() {
         SavingAccount account = new SavingAccount(
                 0,
