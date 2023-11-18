@@ -166,6 +166,79 @@ public class CreditAccountTest {
 
     }
 
+    @Test //несколько покупок превышающих кредитный лимит
+    public void shouldAddToPay9() {
+        CreditAccount account = new CreditAccount(
+                0,
+                5_000,
+                15
+        );
+        account.pay(3000);
+        account.pay(3000);
+
+        Assertions.assertEquals(-3000, account.getBalance());
+
+    }
+
+    @Test //
+    public void shouldAddToPay10() {
+        CreditAccount account = new CreditAccount(
+                0,
+                5_000,
+                15
+        );
+        account.pay(5000);
+
+
+        Assertions.assertEquals(-5000, account.getBalance());
+
+    }
+
+    @Test //
+    public void shouldAddToPay11() {
+        CreditAccount account = new CreditAccount(
+                0,
+                5_000,
+                15
+        );
+        account.pay(3000);
+        account.pay(2000);
+
+
+        Assertions.assertEquals(-5000, account.getBalance());
+
+    }
+
+    @Test //
+    public void shouldAddToPay12() {
+        CreditAccount account = new CreditAccount(
+                10000,
+                5_000,
+                15
+        );
+        account.pay(3000);
+        account.pay(2000);
+
+
+        Assertions.assertEquals(5000, account.getBalance());
+
+    }
+
+    @Test //
+    public void shouldAddToPay13() {
+        CreditAccount account = new CreditAccount(
+                0,
+                5_000,
+                15
+        );
+        account.pay(3000);
+        account.pay(2000);
+
+
+        Assertions.assertEquals(-5000, account.getBalance());
+
+    }
+
     @Test //несколько покупок до кредитного лиммита
     public void shouldAddToPay7() {
         CreditAccount account = new CreditAccount(
